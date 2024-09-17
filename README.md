@@ -1,6 +1,12 @@
+# Disclaimer
+
+This is an internal fork for the Eclipse Laboratories DA publisher. This crate can be used to temporarily allow the usage of lower versions of `zeroize`. This is obviously not recommended, and can silently opt you into older versions of `zeroize`, but in some contexts, this is preferable to a compilation error.
+
+It should be noted that this disables the usage of anything other than the `rpc` and `types` crates, for a more comprehensive solution see: [#381](https://github.com/eigerco/lumina/issues/381).
+
 # Lumina
 
-Rust implementation of Celestia's [data availability node](https://github.com/celestiaorg/celestia-node) able to run natively and in browser-based environments. 
+Rust implementation of Celestia's [data availability node](https://github.com/celestiaorg/celestia-node) able to run natively and in browser-based environments.
 
 Run Lumina now at [lumina.rs](https://lumina.rs/) and directly verify Celestia.
 
@@ -18,7 +24,7 @@ Supported features:
 > [!NOTE]
 > Lumina implements [`shwap`](https://github.com/celestiaorg/CIPs/blob/main/cips/cip-19.md) protocol to perform DASing,
 which is not yet enabled on all networks in the Go implementation. This means that even though Lumina will be sampling all
-blocks, the network is unlikely to provide the requested data yet. Shwap is going to become the main DASing protocol in 
+blocks, the network is unlikely to provide the requested data yet. Shwap is going to become the main DASing protocol in
 the upcoming celestia-node versions.
 
 ## Installing the node
@@ -120,13 +126,13 @@ export CELESTIA_NODE_AUTH_TOKEN=$(docker compose -f ci/docker-compose.yml exec b
 Accessing json RPC api with Go `celestia` cli:
 ```bash
 docker compose -f ci/docker-compose.yml exec bridge-0 \
-    celestia blob submit 0x0c204d39600fddd3 '"Hello world"' --token "$CELESTIA_NODE_AUTH_TOKEN"
+	celestia blob submit 0x0c204d39600fddd3 '"Hello world"' --token "$CELESTIA_NODE_AUTH_TOKEN"
 ```
 
 Extracting blocks for test cases:
 ```bash
 docker compose -f ci/docker-compose.yml exec bridge-0 \
-    celestia header get-by-height 27 --token "$CELESTIA_NODE_AUTH_TOKEN" | jq .result
+	celestia header get-by-height 27 --token "$CELESTIA_NODE_AUTH_TOKEN" | jq .result
 ```
 
 ## Running integration tests with Celestia node
@@ -161,7 +167,7 @@ cargo update
 
 ## Frontend
 
-Check out the front end at [eigerco/lumina-front](https://github.com/eigerco/lumina-front) 
+Check out the front end at [eigerco/lumina-front](https://github.com/eigerco/lumina-front)
 
 ## About Eiger
 
